@@ -1,26 +1,169 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: #ffffff;
+  --gold-primary: #D4AF37;
+  --gold-secondary: #FFD700;
+  --gold-dark: #C5A021;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-gold-bg: rgba(212, 175, 55, 0.05);
+  --glass-gold-border: rgba(212, 175, 55, 0.2);
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-gold: var(--gold-primary);
+  --color-gold-secondary: var(--gold-secondary);
+  --color-gold-dark: var(--gold-dark);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --shadow-gold: 0 8px 32px 0 rgba(212, 175, 55, 0.2);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 2px 2px, rgba(212, 175, 55, 0.05) 1px, transparent 0);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #C5A021 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-button {
+  background: linear-gradient(135deg, #D4AF37 0%, #C5A021 100%);
+  color: #000000;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gold-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: 0.6s;
+  display: block;
+}
+
+.gold-button:hover::after {
+  left: 120%;
+}
+
+.gold-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.refractive-glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.37),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  position: relative;
+  will-change: transform, opacity;
+}
+
+
+
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-gold-panel {
+  background: rgba(212, 175, 55, 0.08);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), var(--shadow-gold);
+}
+
+.bg-blob {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -2;
+  pointer-events: none;
+  animation: blob-float 25s infinite alternate;
+}
+
+@keyframes blob-float {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(10vw, 10vh) scale(1.1); }
+  66% { transform: translate(-5vw, 15vh) scale(0.9); }
+  100% { transform: translate(5vw, -5vh) scale(1); }
+}
+
+.gold-border {
+  border: 1px solid var(--gold-primary);
+}
+
+.card-gold {
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.card-gold:hover {
+  border-color: var(--gold-primary);
+  box-shadow: var(--shadow-gold);
 }
