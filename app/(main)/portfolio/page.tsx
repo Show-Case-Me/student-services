@@ -2,48 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 import { PRESETS } from "@/constants/presets";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Portfolio and Presets",
+  description: "Explore our collection of premium portfolio presets for students and researchers. Choose a design that fits your professional identity.",
+};
 
 export default function Portfolio() {
   const presets = PRESETS;
 
-  const projects = [
-    {
-      title: "Elevate Design Studio",
-      category: "Client Portfolio",
-      link: "#",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      title: "FinTech Hub",
-      category: "Dashboard",
-      link: "#",
-      image: "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      title: "Student Connect",
-      category: "Social Platform",
-      link: "#",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      title: "Alpha Recruitment",
-      category: "Job Board",
-      link: "#",
-      image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      title: "Creative Minds",
-      category: "Personal Brand",
-      link: "#",
-      image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      title: "Tech Solutions",
-      category: "SaaS",
-      link: "#",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800",
-    },
-  ];
+  // const projects = [
+  // ];
 
   return (
     <main className="min-h-screen pt-32 pb-24">
@@ -77,7 +47,7 @@ export default function Portfolio() {
                     className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
-                  <Link 
+                  <Link
                     href={preset.link}
                     target="_blank"
                     className="absolute top-4 right-4 p-3 bg-black/50 backdrop-blur-md rounded-full text-white hover:bg-gold hover:text-black transition-all transform translate-y-[-20px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
@@ -99,7 +69,7 @@ export default function Portfolio() {
         </section>
 
         {/* Portfolio Section */}
-        <section>
+        {/* <section>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-10 flex items-center gap-4">
             <span className="w-12 h-1 bg-white/20 rounded-full" /> Our Portfolio
           </h2>
@@ -131,7 +101,7 @@ export default function Portfolio() {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
       </div>
     </main>
   );

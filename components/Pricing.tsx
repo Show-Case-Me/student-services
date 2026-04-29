@@ -1,5 +1,5 @@
 import React from "react";
-import { Settings, CreditCard, Sparkles } from "lucide-react";
+import { Settings, CreditCard, Sparkles, Link } from "lucide-react";
 
 export default function Pricing() {
     return (
@@ -13,7 +13,7 @@ export default function Pricing() {
                     </p>
                 </div>
 
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-4xl mx-auto my-auto">
                     <div className="glass-panel p-10 md:p-16 rounded-[3rem] relative overflow-hidden border-gold/20">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 blur-[100px] -z-10" />
 
@@ -47,9 +47,6 @@ export default function Pricing() {
                             <p className="text-2xl font-bold text-white mb-8">
                                 We will adjust pricing according to <span className="text-gold italic">YOUR</span> requirements and design.
                             </p>
-                            <button className="gold-button px-10 py-4 rounded-full text-lg font-bold">
-                                Get a Personalized Quote
-                            </button>
                         </div>
                     </div>
                 </div>

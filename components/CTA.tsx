@@ -21,9 +21,6 @@ export default function CTA() {
                         <Link href="/submit-request" className="gold-button px-12 py-5 rounded-full text-xl font-bold flex items-center">
                             Get Started Now
                         </Link>
-                        <button className="flex items-center text-white hover:text-gold transition-colors font-semibold text-lg">
-                            <MessageSquare className="mr-2 h-6 w-6" /> Talk to an Expert
-                        </button>
                     </div>
 
                     <p className="mt-10 text-gray-500 flex items-center justify-center">

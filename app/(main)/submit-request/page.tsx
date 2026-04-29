@@ -1,8 +1,19 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
-import { Mail, FileText, Layout, ArrowLeft, Send } from "lucide-react";
+import { Mail, FileText, Layout, ArrowLeft, Copy, Check } from "lucide-react";
 
 export default function SubmitRequest() {
+  const [copied, setCopied] = useState(false);
+  const email = "showcaseme00@gmail.com";
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   const steps = [
     {
       title: "Email Us",
@@ -86,15 +97,24 @@ export default function SubmitRequest() {
         </div>
 
         <div className="mt-20 glass-panel p-10 rounded-[3rem] text-center border border-gold/20">
-          <h3 className="text-2xl font-bold text-white mb-4">Ready to send that email?</h3>
-          <p className="text-gray-400 mb-8">Click the button below to open your email client with our address pre-filled.</p>
-          <a 
-            href="mailto:showcaseme00@gmail.com?subject=Portfolio%20Request&body=Hi%20Show%20Case%20Me%20team,%0D%0A%0D%0AI%20would%20like%20to%20request%20a%20portfolio%20website.%20Please%20find%20my%20details%20attached.%0D%0A%0D%0ADesign%20Preferences:%0D%0A-%20"
-            className="gold-button px-10 py-4 rounded-full text-lg font-bold inline-flex items-center group"
+          <h3 className="text-2xl font-bold text-white mb-4">Ready to start?</h3>
+          <p className="text-gray-400 mb-8">Click the button below to copy our email address and reach out to us!</p>
+          <button 
+            onClick={handleCopy}
+            className="gold-button px-10 py-4 rounded-full text-lg font-bold inline-flex items-center group min-w-[240px] justify-center transition-all"
           >
-            <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            Send Email Now
-          </a>
+            {copied ? (
+              <>
+                <Check className="mr-2 h-5 w-5 animate-in zoom-in duration-300" />
+                Copied Address!
+              </>
+            ) : (
+              <>
+                <Copy className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+                Copy Email Address
+              </>
+            )}
+          </button>
         </div>
       </div>
     </main>
