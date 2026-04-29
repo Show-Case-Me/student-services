@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 import { PRESETS } from "@/constants/presets";
 
@@ -69,10 +70,11 @@ export default function Portfolio() {
             {presets.map((preset, index) => (
               <div key={index} className="glass-card rounded-[2rem] overflow-hidden group border border-gold/20">
                 <div className="aspect-video relative overflow-hidden">
-                  <img
+                  <Image
                     src={preset.image}
                     alt={preset.title}
-                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                   <Link 
@@ -105,10 +107,11 @@ export default function Portfolio() {
             {projects.map((project, index) => (
               <div key={index} className="glass-card rounded-[2rem] overflow-hidden group">
                 <div className="aspect-video relative overflow-hidden">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                   <Link
